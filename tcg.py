@@ -1,15 +1,23 @@
 from tkinter import *
+import tkinter
 import mysql.connector
-from PIL import ImageTk, Image
+import PIL
+from PIL import *
+from PIL import ImageTk,Image
+import os
+
 
 #create database variable
 #mydb = mysql.connector.connect(host = "localhost", user = "root", password = "mySQL@ccount123!")
+
+absolute_path = os.path.dirname(os.path.abspath(__file__))
 
 root = Tk()
 root.geometry("600x400")
 main_menu = Frame(root, width = 600, height = 400, bg = "skyblue3")
 play_frame = Frame(main_menu)
-img_1 = ImageTk.PhotoImage(Image.open("pash6.png"))
+img_1 = ImageTk.PhotoImage(Image.open(absolute_path+"/pash6.png"))
+
 picture_label_1 = Label(play_frame, image = img_1)
 
 
