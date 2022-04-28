@@ -2,13 +2,10 @@ from tkinter import *
 import tkinter.messagebox as mb
 import mysql.connector
 
-mydb = mysql.connector.connect(host = "localhost", user = "root", password = "mySQL@ccount123!")
+mydb = mysql.connector.connect(host = "localhost", user = "root", password = "fortnitedire")
 
 connector = mydb
 cur = mydb.cursor()
-
-def search():
-    pass
 
 def submit_record():
     global name_strvar, phone_strvar, email_strvar, address_entry, cur
@@ -18,7 +15,7 @@ def submit_record():
     else:
         cur.execute("insert into db.Pokemon_Data(name, attack, health, type) values (%s, %s, %s, %s)", (name, email, phone, address))
         connector.commit()
-        mb.showinfo("Success!", "Field was added succesfully")
+        mb.showinfo("Success!", "Pokemon was added succesfully")
         listbox.delete(0, END)
         list_contacts()
         clear_fields()
@@ -37,11 +34,11 @@ def clear_fields():
 def delete_record():
     global listbox, connector, cur
     if not listbox.get(ACTIVE):
-        mb.showerror("Error", "Contact not selected")
+        mb.showerror("Error", "Pokemon not selected")
     else:
         cur.execute("delete from db.Pokemon_Data where name = %s", (listbox.get(ACTIVE)))
         connector.commit()
-        mb.showinfo("Success!", "Contact was deleted succesfully")
+        mb.showinfo("Success!", "Pokemon was deleted succesfully")
         listbox.delete(0, END)
         list_contacts()
 
@@ -81,7 +78,6 @@ name_strvar = StringVar()
 phone_strvar = StringVar()
 email_strvar = StringVar()
 address_strvar = StringVar()
-search_strvar = StringVar()
 
 pokemon_header = Label(left_frame, text = "Pokemon Details", bg = gray57, font = ("Arial", 20)).place(relx = 0.10, rely = 0.05)
 
@@ -101,10 +97,6 @@ address_label = Label(left_frame, text = "Type", bg = gray, font = frame_font).p
 address_entry = Entry(left_frame, width = 15, font = ("Verdana", 11), textvariable = address_strvar)
 address_entry.place(relx = 0.1, rely = 0.78)
 
-#### Frame 2 Populating ####
-search_entry = Entry(center_frame, width = 18, font = ("Verdana", 12), textvariable = search_strvar)
-search_entry.place(relx = 0.13, rely = 0.04)
-search_button = Button(center_frame, text = "Search", font = frame_font, width = 15, command = search).place(relx = 0.13, rely = 0.1)
 
 add_record_button = Button(center_frame, text = "Add Pokemon", font = frame_font, width = 15, command = submit_record).place(relx = 0.13, rely = 0.2)
 view_records_button = Button(center_frame, text = "View Pokemon", font = frame_font, width = 15, command = view_record).place(relx = 0.13, rely = 0.3)

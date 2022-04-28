@@ -7,7 +7,7 @@ from PIL import ImageTk,Image
 import os
 
 
-#create database variable
+#create database variable   
 #mydb = mysql.connector.connect(host = "localhost", user = "root", password = "mySQL@ccount123!")
 
 absolute_path = os.path.dirname(os.path.abspath(__file__))

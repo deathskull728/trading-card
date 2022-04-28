@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter.messagebox as mb
 import mysql.connector
 
-mydb = mysql.connector.connect(host = "localhost", user = "root", password = "mySQL@ccount123!")
+mydb = mysql.connector.connect(host = "localhost", user = "root", password = "fortnitedire")
 
 connector = mydb
 cur = mydb.cursor()
@@ -27,6 +27,22 @@ title_label.pack(side = TOP, fill = X)
 left_frame.place(relx = 0, relheight = 1, y = 30, relwidth = 0.35)
 center_frame.place(relx = 0.33, relheight = 1, y = 30, relwidth = 0.4)
 right_frame.place(relx = 0.66, relheight = 1, y = 30, relwidth = 0.35)
+
+attack_lbl=Label(center_frame,text='Action',fg='blue',width=15).place(relx=0.13,rely=0.05)
+pokemon_btn=Button(center_frame,text='Pokemon',fg='green',width=15).place(relx=0.13,rely=0.25)
+
+
+attack_btn=Button(center_frame,text='Attack',fg='red',width=15).place(relx=0.13,rely=0.45)
+attack_btn=Button(center_frame,text='Special Attack ',fg='darkred',width=15).place(relx=0.13,rely=0.65)
+attack_btn=Button(center_frame,text='Heal',fg='yellow',width=15).place(relx=0.13,rely=0.85)
+
+l_hp=Label(left_frame,text=f'HP:*').place(relx=0.33,rely=0.55)
+l_ap=Label(left_frame,text=f'AP:*').place(relx=0.33,rely=0.65)
+l_type=Label(left_frame,text=f'Type:*').place(relx=0.33,rely=0.75)
+
+r_hp=Label(right_frame,text=f'HP:*').place(relx=0.33,rely=0.55)
+r_ap=Label(right_frame,text=f'AP:*').place(relx=0.33,rely=0.65)
+r_type=Label(right_frame,text=f'Type:*').place(relx=0.33,rely=0.75)
 
 
 
